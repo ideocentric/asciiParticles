@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
+#include "asciiParticle.hpp"
 
 class ofApp : public ofBaseApp{
 
@@ -25,4 +26,5 @@ class ofApp : public ofBaseApp{
     ofVideoGrabber camera;
     string text;
     ofImage image;
+    asciiParticle asciivid;
 };

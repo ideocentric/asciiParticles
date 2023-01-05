@@ -2,7 +2,8 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-    font.load("fonts/Inconsolata-Regular.ttf", 12);
+    asciivid.setup();
+    //font.load("fonts/Inconsolata-Regular.ttf", 12);
     //text = "Hello";
     ofBackground(0, 0, 0);
     camera.setup(1920, 1080);
@@ -13,14 +14,15 @@ void ofApp::setup(){
 void ofApp::update(){
     camera.update();
     if(camera.isFrameNew()) {
-        //
+        asciivid.update(camera.getPixels());
     }
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    string ascii = "$@@B%%88&&&WWMM##HHKK956432**wwmmoosahhkkbbddppqqZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;;;;::::,,,,,\"\"\"\"\"^^^^^`````''''''.......       ";
-    int w, h,lh;
+//    string ascii = "$@@B%%88&&&WWMM##HHKK956432**wwmmoosahhkkbbddppqqZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;;;;::::,,,,,\"\"\"\"\"^^^^^`````''''''.......       ";
+    //string ascii = "    ````....----'''::__,,^^=;><+!rc*/z?sLTv)J7(|Fi{C}fI31tlu[neoZ5Yxjya]2ESwqkP6h9d4VpOGbUAKXHm8RD#$Bg0MNWQ%&@";
+/*    int w, h,lh;
     lh = font.getLineHeight();
     w = 9;
     h = 15;
@@ -41,6 +43,7 @@ void ofApp::draw(){
             int hue = color.getHue();
             int saturation = color.getSaturation();
             float value = ofNoise(x*scaleX+posX0, y*scaleY + posY0, t * 0.1 + 445.6);
+            //int i = ofMap(brightness*value, 0, 255, 0, ascii.length());
             int i = ofMap(brightness*value, 0, 255, ascii.length(), 0);
             string s(1, ascii[i]);
             ofColor c;
@@ -49,11 +52,12 @@ void ofApp::draw(){
             ofColor flame;
             //int fhue = (int) 40*ofNoise(t * 0.001 + 759.3);
             int fhue = (int) ofRandom(0,25);
-            flame.setHsb(fhue, 255, 255);
+            flame.setHsb(fhue, 255, 200);
             ofSetColor(flame);
             font.drawString(s, x, y);
         }
-    }
+    } */
+    asciivid.draw();
     ofSetColor(255);
     ofDrawBitmapString(ofToString( ofGetFrameRate() ), 10,15);
 
